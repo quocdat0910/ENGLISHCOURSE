@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "EndCart";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+<div class="container" style="margin-top:250px;margin-bottom:250px;">
+    <div class="row">
+        <div style="text-align:center;" class="col-md-12">
+            <h1>Xin chân thành cảm ơn</h1>
+            <p> <h2 class="m-0 text-primary"><i class="fa fa-book me-3"></i>ENGLISH COURSES</h2></p>
+            @Html.ActionLink("Quay lại trang chủ", "ClearCart", "Cart", null, new { @class = "btn btn-primary" })
+        </div>
+    </div>
+</div>
+<script>
+    // Hàm hiển thị thông báo và chuyển hướng sau khoảng thời gian
+    function showSuccessMessage() {
+        // Hiển thị thông báo
+        alert("Đã thực hiện thanh toán. Xin vui lòng đợi để chúng tôi kiểm tra và cung cấp khóa học cho bạn");
+
+    }
+
+    // Gọi hàm hiển thị thông báo khi trang tải xong
+    window.onload = showSuccessMessage;
+</script>
+

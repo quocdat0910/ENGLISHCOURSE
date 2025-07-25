@@ -1,0 +1,39 @@
+﻿@model demo.Models.AdminUser
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="margin-top:20px;text-align:center;">BẠN CÓ CHẮC MUỐN XÓA TÀI KHOẢN ?</h2>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <div class="border-top-0">Tài khoản</div>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameUser)
+        </dd>
+
+        <dt>
+            <div class="border-top-0">Mật khẩu</div>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PasswordUser)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-danger" /> |
+            <a href="~/Admin/Admin/Index"><input type="button" value="Trở lại" class="btn btn-danger" /> </a>
+        </div>
+    }
+</div>

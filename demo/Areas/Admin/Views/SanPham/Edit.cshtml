@@ -1,0 +1,86 @@
+﻿@model demo.Models.Product
+@{
+    ViewBag.Title = "Chỉnh sửa sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="col-lg-8 col-xlg-9 col-md-7">
+    <div class="card">
+        <div class="card-body">
+            @using (Html.BeginForm("Edit", "SanPham", FormMethod.Post, new { }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(model => model.ProductID)
+
+                <div class="form-group">
+                    <label class="col-md-12">Tên sản phẩm</label>
+                    @Html.TextBoxFor(x => x.NamePro, new { @class = "form-control", @placeholder = "Tên sản phẩm" })
+                    @Html.ValidationMessageFor(x => x.NamePro, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputFile">Ảnh khóa học</label>
+                    <div class="input-group">
+                        <div class="custom-file">
+                            @Html.TextBoxFor(x => x.ImagePro, new { @id = "txtImage", @class = "form-control" })
+                        </div>
+                        <div class="input-group-append">
+                            <input type="button" value="Tải ảnh" onclick="BrowseServer('txtImage');" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="example-email" class="col-md-12">Mô tả</label>
+                    @Html.TextAreaFor(x => x.DescriptionPro, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label for="example-email" class="col-md-12">Giá (VND)</label>
+                    @Html.TextBoxFor(x => x.Price, new { @class = "form-control", @placeholder = "1000000" })
+                    @Html.ValidationMessageFor(x => x.Price, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label class="col-md-12">Mã khóa học</label>
+                    @Html.DropDownList("Category", new List<SelectListItem>
+               { new SelectListItem { Text = "TI", Value = "TI" },
+                 new SelectListItem { Text = "IE", Value = "IE" }
+                }, new { @class = "form-select shadow-none form-control-line" })
+                </div>
+                <div class="form-group">
+                    <label class="col-md-12">Giảng dạy</label>
+                    @Html.TextBoxFor(x => x.Teacher, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.Teacher, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label class="col-md-12">Thời gian</label>
+                    @Html.TextBoxFor(x => x.Time, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.Time, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label class="col-md-12">Số lượng học viên</label>
+                    @Html.TextBoxFor(x => x.Amount, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.Amount, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <a class="btn btn-primary" href="/Admin/SanPham/Index">Quay lại</a>
+                        <input type="submit" value="Cập nhập" class="btn btn-primary" />
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+    <!-- Column -->
+    @section scripts{
+        <script>
+            function BrowseServer(field) {
+                var finder = new CKFinder();
+                finder.selectActionFunction = function (fileUrl) {
+                    document.getElementById(field).value = fileUrl;
+                };
+                finder.popup();
+            }
+        </script>
+    }

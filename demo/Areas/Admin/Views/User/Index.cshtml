@@ -1,0 +1,49 @@
+﻿@model IEnumerable<demo.Models.Customer>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<h2 style="text-align:center;" class="card-title">DANH SÁCH NGƯỜI DÙNG</h2>
+<div class="card-text">
+    <a class="btn btn-success" href="/Admin/User/Create">Thêm mới</a>
+</div>
+<div class="table-responsive">
+    <table class="table v-middle">
+        <thead>
+            <tr class="bg-light">
+                <th class="border-top-0">STT</th>
+                <th class="border-top-0">Tài khoản</th>
+                <th class="border-top-0">Mật khẩu</th>
+                <th class="border-top-0">Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                var i = 1;
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <th>@i</th>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NameCus)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PassCus)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EmailCus)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Sửa", "Edit", new { id = item.IDCus }, new { @class = "btn btn-success" })
+                            @Html.ActionLink("Xóa", "Delete", new { id = item.IDCus }, new { @class = "btn btn-danger" })
+                    </tr>
+                    i++;
+                }
+            }
+        </tbody>
+    </table>
+</div>

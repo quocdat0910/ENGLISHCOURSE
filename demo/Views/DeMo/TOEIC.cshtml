@@ -1,0 +1,94 @@
+﻿@model IEnumerable<demo.Models.Product>
+@{
+    ViewBag.Title = "TOEIC";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+
+
+}
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 class="section-title bg-white text-center text-primary px-3">Instructors</h6>
+            <h1 class="mb-5">Chuyên gia giảng dạy TOEIC</h1>
+        </div>
+        <div class="row g-2" style="justify-content:center">
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="team-item bg-light">
+                    <div class="overflow-hidden">
+                        <center>
+                            <img class="img-fluid" src="~/Content/img/dinhluc1.jpg" style="width: 261px; height: 261px;" />
+                        </center>
+                    </div>
+                    <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
+                        <div class="bg-light d-flex justify-content-center pt-2 px-1">
+                            <a class="btn btn-sm-square btn-primary mx-1" href="https://www.facebook.com/dolenglish.toeicdinhluc"><i class="fab fa-facebook-f"></i></a>
+                        </div>
+                    </div>
+                    <div class="text-center p-4">
+                        <h5 class="mb-0">Mr Đình Lực</h5>
+                        <small>Chuyên giảng dạy TOEIC</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
+                <div class="team-item bg-light">
+                    <div class="overflow-hidden">
+                        <center>
+                            <img class="img-fluid" src="~/Content/img/dinhluc2.jpg" style="width: 261px; height: 261px;" />
+                        </center>
+                    </div>
+                    <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
+                        <div class="bg-light d-flex justify-content-center pt-2 px-1">
+                            <a class="btn btn-sm-square btn-primary mx-1" href="https://www.facebook.com/thaygiao9x"><i class="fab fa-facebook-f"></i></a>
+                        </div>
+                    </div>
+                    <div class="text-center p-4">
+                        <h5 class="mb-0">Mr Nguyễn Thái Dương</h5>
+                        <small>Chuyên giảng dạy TOEIC</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 class="section-title bg-white text-center text-primary px-3">TOEIC Courses</h6>
+            <h1 class="mb-5">Khóa học TOEIC</h1>
+        </div>
+        <div class="row g-4 justify-content-center">
+            @foreach (var pro in Model)
+            {
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="course-item bg-light">
+                        <div class="position-relative overflow-hidden">
+                            <img style="width:410px;height:234px;" class="img-fluid" src="@pro.ImagePro" />
+                            <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
+                                @Html.ActionLink("Mua khóa học", "Infor", "Cart", new { id = pro.ProductID }, new { @class = "flex-shrink-0 btn btn-sm btn-primary px-3 border-end", style = "border-radius: 30px;" })
+                            </div>
+                        </div>
+                        <div class="text-center p-4 pb-0">
+                            <h3 class="mb-0">@Html.DisplayFor(model => pro.NamePro)</h3>
+                            <div class="mb-3">
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                            </div>
+                            <h5 style="color: #f05123;" class="mb-4">@demo.Common.Common.FormatNumber(pro.Price, 0) VND</h5>
+                        </div>
+                        <div class="d-flex border-top">
+                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-user-tie text-primary me-2"></i>@Html.DisplayFor(model => pro.Teacher)</small>
+                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-clock text-primary me-2"></i>@Html.DisplayFor(model => pro.Time) tháng</small>
+                            <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>@Html.DisplayFor(model => pro.Amount) học viên</small>
+                        </div>
+                    </div>
+                </div>
+                
+            }
+        </div>
+    </div>
+</div>

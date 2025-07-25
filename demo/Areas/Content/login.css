@@ -1,0 +1,131 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    background-size: cover;
+    background-position: center;
+    background: url(../Image/logo.png) no-repeat;
+    background-position: 100px;
+    object-fit: cover;
+}
+
+.login-box {
+    left: 300px !important;
+    position: relative;
+    width: 400px;
+    height: 450px;
+    border-radius: 40px;
+    display: flex;
+    border: 2px solid black;
+    justify-content: center;
+    align-items: center;
+}
+
+h2 {
+    font-size: 2em;
+    color: black;
+    text-align: center;
+}
+
+.input-box {
+    position: relative;
+    width: 310px;
+    margin: 20px 0;
+    border-bottom: 2px solid black;
+}
+
+    .input-box label {
+        position: absolute;
+        top: 50%;
+        left: 30px;
+        transform: translateY(-50%);
+        font-size: 1em;
+        color: black;
+        transition: .3s;
+    }
+
+    .input-box input {
+        width: 100%;
+        height: 50px;
+        background: transparent;
+        border: none;
+        outline: none;
+        border-radius: 3px;
+        font-size: 1em;
+        color: black;
+        padding: 0 10px 0 30px;
+    }
+
+        .input-box input:focus ~ label,
+        .input-box input:valid ~ label {
+            top: -3px;
+        }
+
+    .input-box .icon {
+        position: absolute;
+        left: 4px;
+        color: black;
+        font-size: 1.1em;
+        color: black;
+        line-height: 55px;
+    }
+
+.forgot-password {
+    margin: -15px 0 15px;
+    font-size: .9em;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+}
+
+    .forgot-password label input {
+        margin-right: 3px;
+    }
+
+    .forgot-password a {
+        color: black;
+        text-decoration: none;
+    }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+button {
+    width: 100%;
+    height: 40px;
+    background: black;
+    border-radius: 40px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: white;
+    font-weight: 500;
+}
+
+.register-link {
+    font-size: .9em;
+    color: black;
+    text-align: center;
+    margin: 25px 0 10px;
+}
+
+    .register-link p a {
+        color: black;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+        .register-link p a:hover {
+            text-decoration: underline;
+        }

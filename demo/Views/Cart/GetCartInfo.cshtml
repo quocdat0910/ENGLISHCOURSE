@@ -1,0 +1,132 @@
+﻿@using demo.Models
+@model List<CartItem>
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+    <link href="~/Content/stylecart.css" rel="stylesheet" />
+    // Lấy giá trị từ ViewBag
+    object TotalPrice = ViewBag.TotalPrice;
+
+    // Định dạng giá trị bằng hàm FormatNumber
+    string formattedTotalPrice = demo.Common.Common.FormatNumber(TotalPrice, 0);
+}
+
+
+<div class="container h-100 py-5">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 class="section-title bg-white text-center text-primary px-3">Cart</h6>
+            <h1 class="mb-5">Giỏ hàng</h1>
+        </div>
+        <div class="col">
+
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="h5">Thanh toán</th>
+                            <th scope="col">Mã khóa học</th>
+                            <th scope="col">Số lượng</th>
+                            <th scope="col">Giá</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var pro in Model)
+                        {
+                            <tr>
+                                <th scope="row">
+                                    <div class="d-flex align-items-center">
+                                        <img src="@pro.ImagePro" class="img-fluid rounded-3"
+                                             style="width: 120px;" alt="Book">
+                                        <div class="flex-column ms-4">
+                                            <p class="mb-2">@Html.DisplayFor(model => pro.NamePro)</p>
+                                        </div>
+                                    </div>
+                                </th>
+                                <td class="align-middle">
+                                    <p class="mb-0" style="font-weight: 500;">@Html.DisplayFor(model => pro.Category)</p>
+                                </td>
+                                <td class="align-middle">
+                                    <p class="mb-0" style="font-weight: 500;">@Html.DisplayFor(model => pro.Number)</p>
+                                </td>
+                                <td class="align-middle">
+                                    <p class="mb-0" style="font-weight: 500;">@demo.Common.Common.FormatNumber(pro.Price, 0)    VND</p>
+                                </td>
+                                <td class="align-middle">
+                                    @Html.ActionLink("Xóa", "RemoveFromCart", new { id = pro.ProductID }, new { @class = "btn btn-danger" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div>
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="card shadow-2-strong mb-5 mb-lg-0">
+                            <div class="alert alert-primary" role="alert">
+                                <p>Chuyển khoản theo mã QR Code bên cạnh chúng tôi sẽ cung cấp cho bạn khóa học</p>
+                                <p>Nội dung chuyển khoản: Tên khóa học - SĐT - Tên khách hàng</p>
+                                <p>Ví dụ: TOEIC 0->500 - 0902660951 - Nguyen Quoc Dat</p>
+                                <p>* Lưu ý</p>
+                                <p>Hãy đảm bảo rằng bạn đã chuyển tiền trước khi ấn vào thanh toán, tối đa 5 phút sau thời gian chuyển khoản nếu hệ thống không phản hồi vui lòng liên hệ ngay bộ phận hỗ trợ của English Courses: </p>
+                                <p>SĐT: 0902.660.951</p>
+                                <p>Gmail: nhom7@gmail.com</p>
+                                <p>Địa chỉ: 828 Sư Vạn Hạnh,Hồ Chính Minh, Việt Nam</p>
+                            </div>
+                            @if (Session["TaiKhoan"] != null)
+                            {
+                                <a style="margin-top:20px;" class="btn btn-block btn-danger" href="#" onclick="confirmPayment()">
+                                    Thanh toán
+                                </a>
+                            }
+                            else
+                            {
+                                <div class="alert alert-danger" role="alert">
+                                    Vui lòng đăng nhập để thực hiện thanh toán
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="card mb-5 mb-lg-0">
+                            <div class="card-body p-4">
+                                <div class="d-flex justify-content-between mb-4" style="font-weight: 500;">
+                                    <p class="mb-2">Tổng số lượng:</p>
+                                    <p class="mb-2">@ViewBag.TotalNumber</p>
+                                </div>
+                                <div class="d-flex justify-content-between mb-4" style="font-weight: 500;">
+                                    <p class="mb-2">Tổng tiền:</p>
+                                    <p class="mb-2">@formattedTotalPrice VND</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="display:flex;">
+                            <img src="~/Content/img/momo.jpg" style="width:50%;" />
+                            <img src="~/Content/img/bank.png" style="width:50%;" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function confirmPayment() {
+        var confirmed = confirm("Bạn có chắc đã chuyển khoản trước khi ấn vào thanh toán?");
+
+        if (confirmed) {
+            window.location.href = "/Cart/EndCart";
+        } else {
+
+        }
+    }
+</script>
+
+
+

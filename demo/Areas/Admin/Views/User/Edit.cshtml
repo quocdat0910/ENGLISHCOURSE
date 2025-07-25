@@ -1,0 +1,55 @@
+﻿@model demo.Models.Customer
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <h3 style="text-align:center;" class="card-title">CHỈNH SỬA NGƯỜI DÙNG</h3>
+        </div>
+    </div>
+
+    @using (Html.BeginForm("Edit", "User", FormMethod.Post, new { }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.IDCus)
+
+            <div class="form-group">
+                <label class="col-md-12">Tài khoản</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.NameCus, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NameCus, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-12">Email</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.EmailCus, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.EmailCus, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-12">Mật khẩu</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.PassCus, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.PassCus, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Lưu" class="btn btn-default" />
+                    <a href="~/Admin/User/Index"><input type="button" value="Trở lại" class="btn btn-danger" /> </a>
+                </div>
+            </div>
+        </div>
+    }
+</section>

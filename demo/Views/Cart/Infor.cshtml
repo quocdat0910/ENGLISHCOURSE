@@ -1,0 +1,84 @@
+﻿@model demo.Models.Product
+@{
+    ViewBag.Title = "Infor";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+
+}
+<!-- Open Content -->
+<section class="bg-light">
+    <div class="container pb-5">
+        <div class="row">
+            <div class="col-lg-5 mt-5">
+                <div class="card mb-3">
+                    <img class="card-img img-fluid" src="@Model.ImagePro" alt="Card image cap" id="product-detail">
+                </div>
+            </div>
+            <!-- col end -->
+            <div class="col-lg-7 mt-5">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="h1">@Html.DisplayFor(model => Model.NamePro)</h1>
+                        <p style="color: #f05123;" class="h3 py-2">@demo.Common.Common.FormatNumber(Model.Price, 0) VND</p>
+                        <p class="py-2">
+                            <i class="fa fa-star text-warning"></i>
+                            <i class="fa fa-star text-warning"></i>
+                            <i class="fa fa-star text-warning"></i>
+                            <i class="fa fa-star text-warning"></i>
+                            <i class="fa fa-star text-warning"></i>
+                        </p>
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <h6>Loại khóa học:</h6>
+                            </li>
+                            <li class="list-inline-item">
+                                <p class="text-muted"><strong>@Html.DisplayFor(model => Model.Category1.NameCate)</strong></p>
+                            </li>
+                        </ul>
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <h6>Giảng dạy:</h6>
+                            </li>
+                            <li class="list-inline-item">
+                                <p class="text-muted"><strong>@Html.DisplayFor(model => Model.Teacher)     |</strong></p>
+                            </li>
+                            <li class="list-inline-item">
+                                <h6>Thời gian:</h6>
+                            </li>
+                            <li class="list-inline-item">
+                                <p class="text-muted"><strong>@Html.DisplayFor(model => Model.Time) tháng     |</strong></p>
+                            </li>
+                            <li class="list-inline-item">
+                                <h6>Số lượng:</h6>
+                            </li>
+                            <li class="list-inline-item">
+                                <p class="text-muted"><strong>@Html.DisplayFor(model => Model.Amount) học viên</strong></p>
+                            </li>
+                        </ul>
+                        <h6>Mô tả:</h6>
+                        <p>@Html.DisplayFor(model => Model.DescriptionPro)</p>
+                        <form action="" method="GET">
+                            <div class="row pb-3">
+                                @Html.ActionLink("Thêm vào giỏ hàng", "AddToCart", "Cart", new { id = Model.ProductID }, new { @class = "btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft" })
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Close Content -->
+<!-- Start Article -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 class="section-title bg-white text-center text-primary px-3">Other Courses</h6>
+            <h1 class="mb-5">Những khóa học khác</h1>
+        </div>
+        <div class="row g-4 justify-content-center">
+            @{ Html.RenderAction("OtherCourse", "Cart");}
+        </div>
+    </div>
+</div>
+
+

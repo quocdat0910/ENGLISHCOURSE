@@ -1,0 +1,45 @@
+﻿@model demo.Models.Product
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="margin-top:20px;text-align:center;">BẠN CÓ CHẮC MUỐN XÓA KHÓA HỌC ?</h2>
+<div class="table-responsive">
+    <table class="table v-middle">
+        <thead>
+            <tr class="bg-light">
+                <th class="border-top-0">Tên khóa học</th>
+                <th class="border-top-0">Ảnh</th>
+                <th class="border-top-0">Giá</th>
+                <th class="border-top-0">Loại khóa học</th>
+                <th class="border-top-0">Giảng dạy</th>
+                <th class="border-top-0">Thời gian (tháng)</th>
+                <th class="border-top-0">Học viên</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td>@Html.DisplayFor(model => Model.NamePro)</td>
+                <td><img src="@Model.ImagePro" width="50" /></td>
+                <td>@demo.Common.Common.FormatNumber(Model.Price, 0)</td>
+                <td>@Html.DisplayFor(model => Model.Category1.NameCate)</td>
+                <td>@Html.DisplayFor(model => Model.Teacher)</td>
+                <td>@Html.DisplayFor(model => Model.Time)</td>
+                <td>@Html.DisplayFor(model => Model.Amount)</td>
+            </tr>
+
+
+        </tbody>
+    </table>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+<div class="form-actions no-color">
+    <input type="submit" value="Xóa" class="btn btn-danger" />
+    <a href="~/Admin/SanPham/Index"><input type="button" value="Trở lại" class="btn btn-danger" /> </a>
+</div>}
+</div>

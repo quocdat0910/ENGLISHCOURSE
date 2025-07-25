@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords"
+          content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Xtreme lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Xtreme admin lite design, Xtreme admin lite dashboard bootstrap 5 dashboard template">
+    <meta name="description"
+          content="Xtreme Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
+    <meta name="robots" content="noindex,nofollow">
+    <title>ENGLISH COURSES</title>
+    <link rel="canonical" href="https://www.wrappixel.com/templates/xtreme-admin-lite/" />
+
+    <link href="~/Areas/Admin/dist/css/style.min.css" rel="stylesheet" />
+    <link href="~/Areas/assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
+
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+</head>
+
+<body>
+    <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
+         data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+        <header class="topbar" data-navbarbg="skin5">
+            <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+                <a href="/Home/Index" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+                    <h2 class="m-0 text-primary"><i class="fa fa-book me-3"></i>ENGLISH COURSES</h2>
+                </a>
+                <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-expanded="false">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </nav>
+        </header>
+
+        <aside class="left-sidebar" data-sidebarbg="skin6">
+            <div class="scroll-sidebar">
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                               href="/Admin/SanPham/Index" aria-expanded="false">
+                                <i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Danh sách sản phẩm</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                               href="/Admin/Admin/Index" aria-expanded="false">
+                                <i class="mdi mdi-account-network"></i><span class="hide-menu">Quản lý Admin</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                               href="/Admin/User/Index" aria-expanded="false">
+                                <i class="mdi mdi-face"></i><span class="hide-menu">Quản lý khách hàng</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                </nav>
+            </div>
+        </aside>
+        <div class="page-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="footer text-center">
+        Copyright © LTWEnglishCourse@gmail.com | Tuyên bố từ chối | Bảo mật | Khả năng truy cập | Phản hồi cho website
+    </footer>
+    <script src="~/Areas/assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="~/Areas/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Areas/dist/js/app-style-switcher.js"></script>
+    <script src="~/Areas/dist/js/waves.js"></script>
+    <script src="~/Areas/dist/js/sidebarmenu.js"></script>
+    <script src="~/Areas./dist/js/custom.js"></script>
+    <script src="~/Areas/assets/libs/chartist/dist/chartist.min.js"></script>
+    <script src="~/Areas/assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+    <script src="~/Areas/Admin/dist/js/pages/dashboards/dashboard1.js"></script>
+    @RenderSection("scripts", required: false)
+    <script src="~/Areas/Content/ckfinder/ckfinder.js"></script>
+</body>
+</html>

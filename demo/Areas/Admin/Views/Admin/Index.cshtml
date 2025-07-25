@@ -1,0 +1,55 @@
+﻿@model IEnumerable<demo.Models.AdminUser>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center;" class="card-title">DANH SÁCH ADMIN</h2>
+<div class="card-text">
+    <a class="btn btn-success" href="/Admin/Admin/Create">Thêm mới</a>
+</div>
+<div class="table-responsive">
+    <table class="table v-middle">
+        <thead>
+            <tr class="bg-light">
+                <th class="border-top-0">
+                    STT
+                </th>
+
+                <th class="border-top-0">
+                    Tài khoản
+                </th>
+                <th class="border-top-0">
+                    Mật khẩu
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @if (Model != null)
+            {
+                var i = 1;
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@i</td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NameUser)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PasswordUser)
+                        </td>
+
+                        <td>
+                            @Html.ActionLink("Sửa", "Edit", new { id = item.ID }, new { @class = "btn btn-success" })
+                            @Html.ActionLink("Xóa", "Delete", new { id = item.ID }, new { @class = "btn btn-danger" })
+                        </td>
+                    </tr>
+                    i++;
+                }
+            }
+        </tbody>
+    </table>
+</div>
